@@ -1,0 +1,13 @@
+<form [formGroup]="emailForm" *ngIf="!disabled">
+    <mat-form-field>
+        <input matInput placeholder="Email" [formControl]="emailForm.controls.email"
+        (keyup)="propagateChange($event.target.value)"
+        (blur)="propagateTouched($event)"/>
+        <mat-error>
+            <ng-container *ngIf="emailForm.controls.email?.errors as errors">
+              <span *ngIf="errors.required" [innerHTML]="'Email required'"></span>
+              <span *ngIf="!errors.required && errors.email" [innerHTML]="'Invalid'"></span>
+            </ng-container>
+          </mat-error>
+      </mat-form-field>
+</form>
