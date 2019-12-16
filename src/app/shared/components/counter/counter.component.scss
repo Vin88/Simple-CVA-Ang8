@@ -1,3 +1,4 @@
+$background-color: #DEE0EE;
 .container {
   display: flex;
   width: 100%;
@@ -6,52 +7,52 @@
   justify-content: center;
   align-items: center;
 }
-.quantity {
+.counter_element {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
 }
-.quantity__minus,
-.quantity__plus {
+.counter_minus,
+.counter_plus {
   display: block;
   width: 22px;
   height: 23px;
   margin: 0;
-  background: #dee0ee;
+  background: $background-color;
   text-decoration: none;
   text-align: center;
   line-height: 23px;
 }
-.quantity__minus:hover,
-.quantity__plus:hover {
+.counter_minus:hover,
+.counter_plus:hover {
   background: #575b71;
   color: #fff;
 }
-.quantity__minus {
+.counter_minus {
   border-radius: 3px 0 0 3px;
 }
-.quantity__plus {
+.counter_plus {
   border-radius: 0 3px 3px 0;
 }
-.quantity__input {
+.counter_input {
   width: 32px;
   height: 19px;
   margin: 0;
   padding: 0;
   text-align: center;
-  border-top: 2px solid #dee0ee;
-  border-bottom: 2px solid #dee0ee;
-  border-left: 1px solid #dee0ee;
-  border-right: 2px solid #dee0ee;
+  border-top: 2px solid $background-color;
+  border-bottom: 2px solid $background-color;
+  border-left: 1px solid $background-color;
+  border-right: 2px solid $background-color;
   background: #fff;
   color: #8184a1;
 }
-.quantity__minus:link,
-.quantity__plus:link {
+.counter_minus:link,
+.counter_plus:link {
   color: #8184a1;
 }
-.quantity__minus:visited,
-.quantity__plus:visited {
+.counter_minus:visited,
+.counter_plus:visited {
   color: #fff;
 }

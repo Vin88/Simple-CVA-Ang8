@@ -1,25 +1,20 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+  <h1>Welcome to {{ title }}!</h1>
   <form [formGroup]="userForm" (ngSubmit)="saveForm()">
     <mat-form-field>
       <input matInput placeholder="Username" formControlName="userName" />
     </mat-form-field>
-    <br>
-    <mat-checkbox  formControlName="hasEmail">Provide email</mat-checkbox>
-    <br>
-    <app-email-input  formControlName="email"></app-email-input>
-    <br>
+    <br />
+    <mat-checkbox formControlName="hasEmail">Provide email</mat-checkbox>
+    <br />
+    <app-email-input formControlName="email"></app-email-input>
+    <br />
     <app-counter formControlName="counter"></app-counter>
     <div>
       <button type="submit" mat-raised-button color="primary">Save</button>
     </div>
   </form>
-    <br/>
-    <p><b>Form data:</b> {{userForm.value | json}}</p>
-    <p><b>Form status:</b> {{userForm.valid}}</p>
+  <br />
+  <p><b>Form data:</b> {{ userForm.value | json }}</p>
+  <p><b>Form status:</b> {{ userForm.valid }}</p>
 </div>
-
-<router-outlet></router-outlet>

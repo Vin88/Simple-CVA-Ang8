@@ -23,9 +23,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     let email = this.userForm.get('email');
-
     this.userForm.controls.hasEmail.valueChanges.subscribe((data) => {
-      if(data && email) {
+      if (data && email) {
         email.enable();
       } else {
         email.disable();
@@ -34,8 +33,6 @@ export class AppComponent implements OnInit {
   }
 
   public saveForm() {
-    console.log('********Form submit********');
     this.userForm.markAsDirty();
-    console.log(this.userForm.status);
   }
 }

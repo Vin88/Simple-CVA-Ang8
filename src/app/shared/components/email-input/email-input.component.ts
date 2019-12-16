@@ -1,5 +1,5 @@
 import { Component, OnInit, forwardRef } from '@angular/core';
-import { ControlValueAccessor, FormGroup, FormControl, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-email-input',
@@ -15,28 +15,25 @@ import { ControlValueAccessor, FormGroup, FormControl, NG_VALUE_ACCESSOR, Valida
 })
 export class EmailInputComponent implements OnInit, ControlValueAccessor {
 
-  public emailForm: FormGroup;
+  public emailControl: FormControl;
   public disabled: boolean;
 
   constructor() {
-    this.emailForm = new FormGroup({
-      email: new FormControl('')
-    });
+    this.emailControl = new FormControl('', [Validators.required, Validators.email]);
   }
 
   ngOnInit() {
-    this.emailForm.valueChanges.subscribe((data) => {
+    this.emailControl.valueChanges.subscribe((data) => {
       if (data && !this.disabled) {
         this.propagateChange();
       }
     });
   }
+
   /**
    * Function registered to propagate a change to the parent
    */
-  public propagateChange: any = () => {
-    console.log(this.emailForm);
-  };
+  public propagateChange: any = () => {};
 
   /**
    * Function registered to propagate touched to the parent
@@ -46,26 +43,17 @@ export class EmailInputComponent implements OnInit, ControlValueAccessor {
    * ControlValueAccessor Interface Methods to be implemented
    */
   writeValue(obj: any): void {
-    console.log("Write value");
-    this.emailForm.get('email').setValue(obj);
-    this.emailForm.get('email').setValidators([Validators.required, Validators.email]);
+    this.emailControl.setValue(obj);
+    // this.emailForm.get('email').setValidators();
   }
   registerOnChange(fn: any): void {
-    console.log("Register on change");
     this.propagateChange = fn;
   }
   registerOnTouched(fn: any): void {
-    console.log("Register on touched");
     this.propagateTouched = fn;
   }
   setDisabledState?(isDisabled: boolean): void {
-    console.log("Set disabled state");
     this.disabled = isDisabled;
-    // throw new Error("Method not implemented.");
   }
   /** ControlValueAccessor Interface Methods to be implemented */
-
-  test() {
-    console.log(this.emailForm);
-  }
 }

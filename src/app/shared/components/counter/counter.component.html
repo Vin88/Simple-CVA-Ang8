@@ -1,8 +1,8 @@
 
 <div class="container">
-  <div class="quantity">
-    <a href="#" class="quantity__minus" (click)="decrement()"><span>-</span></a>
-    <input name="quantity" type="text" class="quantity__input" [ngModel]="counter">
-    <a href="#" class="quantity__plus" (click)="increment()"><span>+</span></a>
+  <div class="counter_element">
+    <a href="#" class="counter_minus" (click)="decrement()"><span>-</span></a>
+    <input name="counter_element" type="text" class="counter_input" [(ngModel)]="counter">
+    <a href="#" class="counter_plus" (click)="increment()"><span>+</span></a>
   </div>
 </div>

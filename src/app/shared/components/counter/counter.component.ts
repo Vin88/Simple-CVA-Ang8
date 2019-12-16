@@ -13,25 +13,15 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/f
     }
   ]
 })
-export class CounterComponent implements OnInit, ControlValueAccessor {
+export class CounterComponent implements ControlValueAccessor {
   public counter: number = 0;
   public disabled: boolean;
-  constructor() {
-   }
+  constructor() {}
 
-  ngOnInit() {
-    // this.counter.valueChanges.subscribe((data) => {
-    //   if (data && !this.disabled) {
-    //     this.propagateChange();
-    //   }
-    // });
-  }
   /**
    * Function registered to propagate a change to the parent
    */
-  public propagateChange: any = () => {
-    console.log(this.counter);
-  };
+  public propagateChange: any = () => {};
 
   /**
    * Function registered to propagate touched to the parent
@@ -41,36 +31,23 @@ export class CounterComponent implements OnInit, ControlValueAccessor {
    * ControlValueAccessor Interface Methods to be implemented
    */
   writeValue(obj: any): void {
-    console.log("Write value");
     this.counter = obj;
-    // this.counterForm.get('email').setValidators([Validators.required, Validators.email]);
   }
   registerOnChange(fn: any): void {
-    console.log("Register on change");
     this.propagateChange = fn;
   }
   registerOnTouched(fn: any): void {
-    console.log("Register on touched");
     this.propagateTouched = fn;
-  }
-  setDisabledState?(isDisabled: boolean): void {
-    console.log("Set disabled state");
-    this.disabled = isDisabled;
-    // throw new Error("Method not implemented.");
   }
   /** ControlValueAccessor Interface Methods to be implemented */
 
   public decrement() {
-    console.log(this.counter);
-    // this.counter.patchValue(this.counter.value - 1);
-    this.counter = this.counter - 1;
+    this.counter = this.counter > 0 ? this.counter - 1 : 0;
     this.propagateChange(this.counter);
   }
 
   public increment() {
-    console.log(this.counter);
     this.counter = this.counter + 1;
-    // this.counter.patchValue(this.counter.value + 1);
     this.propagateChange(this.counter);
   }
 }
