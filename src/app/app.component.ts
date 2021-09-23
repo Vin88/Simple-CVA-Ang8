@@ -9,7 +9,7 @@ import { validateConfig } from '@angular/router/src/config';
 })
 export class AppComponent implements OnInit {
 
-  public title = 'CVA with reactive / template driven form';
+  public title = 'Control Value Accessor impl with reactive / template driven form';
   public userForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
